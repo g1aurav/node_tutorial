@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
+
+
+
 // Require the controllers WHICH WE DID NOT CREATE YET!!
 const product_controller = require('../controllers/product.controller');
 
@@ -19,6 +22,12 @@ router.put('/:id' , product_controller.findByIdAndUpdate);
 // find and delete by id
 
 router.delete('/:id' , product_controller.findOneAndDelete);
+
+
+
+
+
+
 
 
 // router.get('/findByAll' , product_controller.findByAll);

@@ -2,6 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const product = require('./routes/product.route');
+const student = require('./routes/student.route');
+const college = require('./routes/college.route');
 
 
 const app = express();
@@ -33,5 +35,7 @@ mongoose.connect(dev_db_url)
 //     res.status(200).json({name: 'sweta', age: 999});
 // });
 app.use('/products', product);
+app.use('/student', student);
+app.use('/college', college);
 
 app.listen(3030, () => console.log(`Example app listening on port ${3030}!`))

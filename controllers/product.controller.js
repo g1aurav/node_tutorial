@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Product = require('../models/product.model');
 
+
 //Simple version, without validation or sanitation
 exports.test = function (req, res) {
     res.send('Greetings from the Test controller!');
@@ -24,6 +25,7 @@ exports.create = async function(req,res,next){
         return res.status(200).json({data}); 
     } catch (err) {
         return res.error(err);
+        next(err);
     }
 };
 
@@ -43,7 +45,7 @@ exports.findById = async function(req,res,next){
         next(err);
     }
 }
-exports.getAllProducts = async function(req,res,next){  
+exports.getAllProducts = async function(req,res,next){
     try{
         const data = await Product.find({});
         return res.status(200).json({data});
@@ -70,7 +72,7 @@ exports.findByIdAndUpdate = async function(req,res,next){
 }
 
 
-exports.findOneAndDelete= async function(req,res,next){
+exports.findOneAndDelete = async function(req,res,next){
     if(!req.params.id){
         return res.status(400).json({data});
     }
@@ -83,3 +85,5 @@ exports.findOneAndDelete= async function(req,res,next){
         next(err);
     }
 }
+
+
